@@ -5,6 +5,8 @@ tentativas_max = 3
 tentativas = 0
 acesso = False
 
+#Senha para entrar
+
 while tentativas < tentativas_max:
     tentativa = input("Digite a senha de acesso: ")
     
@@ -18,6 +20,7 @@ while tentativas < tentativas_max:
 if acesso == True:
     print("\nAcesso Liberado!")
 
+#O cofre começa aqui
     while True:
      print("\n=== COFRE DE SENHAS ===")
      print("1 - Guardar senha")
@@ -26,6 +29,7 @@ if acesso == True:
      print("4 - Sair")
      opcao = input("Escolha a opção: ")
      
+     #Nome e app que a senha é guardada
      if opcao == "1":
         nome = input("Nome do app que deseja guardar a senha: ").lower()
         usuario= input("Nome do usuário: ")
@@ -33,6 +37,7 @@ if acesso == True:
         cofre[nome] = {"usuario": usuario, "senha": senha}
         print("Dados guardados com sucesso!")
      
+     # Buscar senha e usuario
      elif opcao == "2":
           nome = input("Qual app deseja buscar a senha e usuário?: ").lower()
           if nome in cofre:
@@ -57,5 +62,6 @@ if acesso == True:
      else:
         print("Opção Inválida")
 
+#Caso erre a senha é bloqueado de usar 
 else:
     print("Acesso Negado!")
