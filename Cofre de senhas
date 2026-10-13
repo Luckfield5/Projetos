@@ -1,0 +1,61 @@
+#Projeto confre de senhas
+cofre = {}
+senha_de_acesso = "061023"
+tentativas_max = 3
+tentativas = 0
+acesso = False
+
+while tentativas < tentativas_max:
+    tentativa = input("Digite a senha de acesso: ")
+    
+    if tentativa == senha_de_acesso:
+       acesso = True
+       break
+    else:
+        tentativas = tentativas + 1
+        print("Senha incorreta! Tentativas restantes", tentativas_max - tentativas)
+
+if acesso == True:
+    print("\nAcesso Liberado!")
+
+    while True:
+     print("\n=== COFRE DE SENHAS ===")
+     print("1 - Guardar senha")
+     print("2 - Buscar")
+     print("3 - Lista de apps guardados")
+     print("4 - Sair")
+     opcao = input("Escolha a opção: ")
+     
+     if opcao == "1":
+        nome = input("Nome do app que deseja guardar a senha: ").lower()
+        usuario= input("Nome do usuário: ")
+        senha = input("Digite a senha: ")
+        cofre[nome] = {"usuario": usuario, "senha": senha}
+        print("Dados guardados com sucesso!")
+     
+     elif opcao == "2":
+          nome = input("Qual app deseja buscar a senha e usuário?: ").lower()
+          if nome in cofre:
+             print("Nome do usuário:", cofre[nome]["usuario"])
+             print("Senha:", cofre[nome]["senha"])
+          else:
+              print("Usuário e senha não encontrado, verifique novamente!")
+    
+     elif opcao == "3":
+         if len(cofre) == 0:
+           print("Nenhum app guardado ainda!")
+         else:
+             print("\nApps guardados:")
+             for nome in cofre:
+                 print("-", nome.title())
+     
+     elif opcao == "4":
+          print("Saindo...")
+          print("Obrigado por usar até logo!")
+          break
+     
+     else:
+        print("Opção Inválida")
+
+else:
+    print("Acesso Negado!")
